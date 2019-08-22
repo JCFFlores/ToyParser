@@ -1,0 +1,2 @@
+class NotComplexCharacterException(Exception):
+    pass
