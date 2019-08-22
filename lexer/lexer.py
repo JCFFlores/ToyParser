@@ -1,5 +1,7 @@
 from enum import Enum
 from typing import Mapping, Union
+from .exceptions import NotComplexCharacterException
+from .utils import is_digit, is_operator, is_letter
 
 
 class TokenType(Enum):
@@ -40,3 +42,12 @@ automaton: Mapping[State, Mapping[Character, State]] = {
         ComplexCharacter.DIGIT: TokenType.VARIABLE
     }
 }
+
+def checkComplexCharacter(s: str) -> ComplexCharacter:
+    if is_digit(s):
+        return ComplexCharacter.DIGIT
+    if is_letter(s):
+        return ComplexCharacter.LETTER
+    if is_operator(s):
+        return ComplexCharacter.OPERATOR
+    raise NotComplexCharacterException
