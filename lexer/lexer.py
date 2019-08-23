@@ -34,6 +34,7 @@ class Token:
 State = Union[TokenType, NonTerminalState]
 Character = Union[str, ComplexCharacter]
 Automata = Mapping[State, Mapping[Character, State]]
+TokenGenerator = Generator[Token, None, None]
 
 automata: Automata = {
     NonTerminalState.START: {
@@ -74,7 +75,7 @@ def token_or_exception(state: State, token: str) -> Token:
 
 
 def tokenize_helper(automata: Automata,
-                    text: str) -> Generator[Token, None, None]:
+                    text: str) -> TokenGenerator:
     token: str = ""
     current_state: State = NonTerminalState.START
     for current_char, next_char in zip(text, text[1:] + ' '):
@@ -89,5 +90,4 @@ def tokenize_helper(automata: Automata,
             current_state = NonTerminalState.START
 
 
-tokenize: Callable[[str], Generator[Token, None, None]
-                   ] = partial(tokenize_helper, automata)
+tokenize: Callable[[str], TokenGenerator] = partial(tokenize_helper, automata)
