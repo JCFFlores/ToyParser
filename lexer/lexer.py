@@ -81,10 +81,10 @@ def tokenize_helper(automata: Automata,
     for current_char, next_char in zip(text, text[1:] + ' '):
         current_character: Character = convert_character(current_char)
         next_character: Character = convert_character(next_char)
-        next_state: State = automata[current_state][current_character]
-        token += current_char
-        current_state = next_state
         try:
+            next_state: State = automata[current_state][current_character]
+            token += current_char
+            current_state = next_state
             automata[current_state][next_character]
         except KeyError:
             yield token_or_exception(current_state, token.strip())
