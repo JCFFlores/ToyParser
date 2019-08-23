@@ -95,3 +95,9 @@ def test_nested_expression():
             ')'),
     ]
     assert_tokenize(token_list, input_string)
+
+
+def test_incomplete_variable():
+    input_string: str = "a4"
+    with pytest.raises(InvalidTokenException):
+        list(tokenize(input_string))
