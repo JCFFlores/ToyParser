@@ -25,6 +25,12 @@ class NonTerminalState(Enum):
     VARIABLE_INTERMEDIATE = 2
 
 
+@dataclass
+class Token:
+    token_type: TokenType
+    vaue: str
+
+
 State = Union[TokenType, NonTerminalState]
 Character = Union[str, ComplexCharacter]
 Automata = Mapping[State, Mapping[Character, State]]
@@ -59,12 +65,6 @@ def convert_character(s: str) -> Character:
     if is_operator(s):
         return ComplexCharacter.OPERATOR
     return s
-
-
-@dataclass
-class Token:
-    token_type: TokenType
-    value: str
 
 
 def token_or_exception(state: State, token: str) -> Token:
