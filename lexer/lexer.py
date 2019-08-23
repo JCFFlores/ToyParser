@@ -28,7 +28,10 @@ class NonTerminalState(Enum):
 @dataclass
 class Token:
     token_type: TokenType
-    vaue: str
+    value: str
+
+    def __str__(self) -> str:
+        return f'Token type: {self.token_type.name}\tToken value: {self.value}'
 
 
 State = Union[TokenType, NonTerminalState]
