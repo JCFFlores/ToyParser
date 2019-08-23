@@ -55,3 +55,9 @@ def test_invalid_variable():
     input_string: str = "$1234"
     with pytest.raises(InvalidTokenException):
         list(tokenize(input_string))
+
+
+def test_invalid_number():
+    input_string: str = "12a5"
+    with pytest.raises(InvalidTokenException):
+        list(tokenize(input_string))
