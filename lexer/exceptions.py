@@ -1,5 +1,3 @@
-class NotComplexCharacterException(Exception):
-    pass
-
 class InvalidTokenException(Exception):
-    pass
+    def __init__(self, token: str):
+        super().__init__(f'Invalid token {token}')
