@@ -61,3 +61,37 @@ def test_invalid_number():
     input_string: str = "12a5"
     with pytest.raises(InvalidTokenException):
         list(tokenize(input_string))
+
+
+def test_nested_expression():
+    input_string: str = "(* (/ 4 2) 1)"
+    token_list: List[Token] = [
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '*'),
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '/'),
+        Token(
+            TokenType.NUMBER,
+            '4'),
+        Token(
+            TokenType.NUMBER,
+            '2'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+        Token(
+            TokenType.NUMBER,
+            '1'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+    ]
+    assert_tokenize(token_list, input_string)
