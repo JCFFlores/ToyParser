@@ -71,7 +71,7 @@ def convert_character(s: str) -> Character:
 def token_or_exception(state: State, token: str) -> Token:
     if isinstance(state, TokenType):
         return Token(state, token)
-    raise InvalidTokenException(token)
+    raise InvalidTokenException(token) from None
 
 
 def tokenize_helper(automata: Automata,
@@ -84,7 +84,9 @@ def tokenize_helper(automata: Automata,
         next_state: State = automata[current_state][current_character]
         token += current_char
         current_state = next_state
-        if automata[current_state].get(next_character):
+        try:
+            automata[current_state][next_character]
+        except KeyError:
             yield token_or_exception(current_state, token.strip())
             token = ""
             current_state = NonTerminalState.START
