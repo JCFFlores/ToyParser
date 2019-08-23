@@ -101,3 +101,25 @@ def test_incomplete_variable():
     input_string: str = "a4"
     with pytest.raises(InvalidTokenException):
         list(tokenize(input_string))
+
+
+def test_expression_with_variables():
+    input_string: str = "(- $var1 $var2)"
+    token_list: List[Token] = [
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '-'),
+        Token(
+            TokenType.VARIABLE,
+            '$var1'),
+        Token(
+            TokenType.VARIABLE,
+            '$var2'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+    ]
+    assert_tokenize(token_list, input_string)
