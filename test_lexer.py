@@ -123,3 +123,13 @@ def test_expression_with_variables():
             ')'),
     ]
     assert_tokenize(token_list, input_string)
+
+
+def test_white_spaces():
+    input_string: str = "    $var1       "
+    token_list: List[Token] = [
+        Token(
+            TokenType.VARIABLE,
+            '$var1'),
+    ]
+    assert_tokenize(token_list, input_string)
