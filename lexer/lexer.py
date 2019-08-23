@@ -88,7 +88,7 @@ def tokenize_helper(automata: Automata,
             token += current_char
             next_state: State = automata[current_state][current_character]
             current_state = next_state
-            automata[current_state][next_character]
+            _ = automata[current_state][next_character]
         except KeyError:
             yield token_or_exception(current_state, token.strip())
             token = ""
