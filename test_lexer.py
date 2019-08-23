@@ -133,3 +133,9 @@ def test_white_spaces():
             '$var1'),
     ]
     assert_tokenize(token_list, input_string)
+
+
+def test_no_floating_point_numbers():
+    input_string: str = "12.34"
+    with pytest.raises(InvalidTokenException):
+        list(tokenize(input_string))
