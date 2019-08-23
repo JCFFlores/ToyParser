@@ -82,8 +82,8 @@ def tokenize_helper(automata: Automata,
         current_character: Character = convert_character(current_char)
         next_character: Character = convert_character(next_char)
         try:
-            next_state: State = automata[current_state][current_character]
             token += current_char
+            next_state: State = automata[current_state][current_character]
             current_state = next_state
             automata[current_state][next_character]
         except KeyError:
