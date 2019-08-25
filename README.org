@@ -14,8 +14,16 @@ Cd to project directory
 Create a virtual environment for the project
 ~pipenv install~
 
+If it's desired to run unit tests create virtual environment in the following way
+~pipenv install --dev~
+
 Initialize a pipenv session by running
 ~pipenv shell~
 
+*** Scanner instructions
 Execute the program using the following structure
 ~python minicompiler.py scanner INPUT_STRING~
+
+*** Unit test instructions
+To execute unit tests in the project run ~pytest~ command
+
