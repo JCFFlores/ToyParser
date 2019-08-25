@@ -3,6 +3,7 @@ from parser import TokenList, parse, IncorrectTokenException, ExcedingTokensExce
 from collections import deque
 import click
 
+
 @click.group()
 def cli():
     pass
