@@ -42,7 +42,7 @@ def parse_expression(token_list: TokenList) -> None:
         raise NoMoreTokensException from None
 
 
-def parser_start(token_list: TokenList) -> None:
+def parse_start(token_list: TokenList) -> None:
     consume_left_parenthesis(token_list)
     consume_operator(token_list)
     parse_expression(token_list)
