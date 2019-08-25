@@ -97,3 +97,28 @@ def test_bad_expression():
     ])
     with pytest.raises(IncorrectTokenException):
         parse(token_list)
+
+
+def test_consume_all():
+    token_list: TokenList = deque([
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '+'),
+        Token(
+            TokenType.NUMBER,
+            '1'),
+        Token(
+            TokenType.VARIABLE,
+            '$var'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')')
+    ])
+    with pytest.raises(ExcedingTokensException):
+        parse(token_list)
