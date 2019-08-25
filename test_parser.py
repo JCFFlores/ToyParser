@@ -22,3 +22,36 @@ def test_basic_expression():
             ')'),
     ])
     parse(token_list)
+
+
+def test_nested_expression():
+    token_list: TokenList = deque([
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '-'),
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.OPERATOR,
+            '+'),
+        Token(
+            TokenType.NUMBER,
+            '1'),
+        Token(
+            TokenType.VARIABLE,
+            '$var'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+        Token(
+            TokenType.NUMBER,
+            '3'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+    ])
+    parse(token_list)
