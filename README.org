@@ -1,0 +1,21 @@
+* ToyParser
+** Pre-requisites
+Pipenv is used to manage dependencies inside the project, it's recommended to use it instead of installing dependencies by trial and error.
+
+[[https://github.com/pypa/pipenv][Pipenv project link]]
+
+Python 3.7 was used to develop this project and pipenv will attempt to create a python 3.7 environment, it's necessary to have it installed inside the machine.
+However I would seriously recommend to instead make use of pyenv as it's much much easier than to manually install python versions and it's supported by pipenv
+
+[[https://github.com/pyenv/pyenv][Pyenv project link]]
+** Instructions
+Cd to project directory
+
+Create a virtual environment for the project
+~code~pipenv install~code~
+
+Initialize a pipenv session by running
+~code~pipenv shell~code~
+
+Execute the program using the following structure
+~code~python minicompiler.py scanner INPUT_STRING~code~
