@@ -12,10 +12,10 @@ However I would seriously recommend to instead make use of pyenv as it's much mu
 Cd to project directory
 
 Create a virtual environment for the project
-~code~pipenv install~code~
+~pipenv install~
 
 Initialize a pipenv session by running
-~code~pipenv shell~code~
+~pipenv shell~
 
 Execute the program using the following structure
-~code~python minicompiler.py scanner INPUT_STRING~code~
+~python minicompiler.py scanner INPUT_STRING~
