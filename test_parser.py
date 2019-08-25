@@ -75,3 +75,25 @@ def test_incomplete_expression():
     ])
     with pytest.raises(NoMoreTokensException):
         parse(token_list)
+
+
+def test_bad_expression():
+    token_list: TokenList = deque([
+        Token(
+            TokenType.LEFT_PARENTHESIS,
+            '('),
+        Token(
+            TokenType.NUMBER,
+            '1'),
+        Token(
+            TokenType.NUMBER,
+            '1'),
+        Token(
+            TokenType.VARIABLE,
+            '$var'),
+        Token(
+            TokenType.RIGHT_PARENTHESIS,
+            ')'),
+    ])
+    with pytest.raises(IncorrectTokenException):
+        parse(token_list)
