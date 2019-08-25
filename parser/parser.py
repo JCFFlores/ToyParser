@@ -30,11 +30,7 @@ def parse_expression(token_list: TokenList) -> None:
     try:
         next_token: Token = token_list[0]
         if next_token.token_type is TokenType.LEFT_PARENTHESIS:
-            consume_left_parenthesis(token_list)
-            consume_operator(token_list)
-            parse_expression(token_list)
-            parse_expression(token_list)
-            consume_right_parenthesis(token_list)
+            parse_full_expression(token_list)
         elif next_token.token_type is TokenType.VARIABLE:
             consume_variable(token_list)
         else:
@@ -43,7 +39,7 @@ def parse_expression(token_list: TokenList) -> None:
         raise NoMoreTokensException from None
 
 
-def parse_start(token_list: TokenList) -> None:
+def parse_full_expression(token_list: TokenList) -> None:
     consume_left_parenthesis(token_list)
     consume_operator(token_list)
     parse_expression(token_list)
@@ -52,6 +48,6 @@ def parse_start(token_list: TokenList) -> None:
 
 
 def parse(token_list: TokenList) -> None:
-    parse_start(token_list)
+    parse_full_expression(token_list)
     if not len(token_list) == 0:
         raise ExcedingTokensException
